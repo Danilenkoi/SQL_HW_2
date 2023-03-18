@@ -1,0 +1,56 @@
+Задание 2.1
+skypro=# UPDATE employee SET first_name = 'Ilya' WHERE first_name = 'Petya';
+UPDATE 1
+skypro=# UPDATE employee SET first_name = 'Anna' WHERE first_name = 'Olgya';
+UPDATE 1
+skypro=# SELECT * FROM employee;
+ id | first_name | last_name | gender | age 
+----+------------+-----------+--------+-----
+  2 | Ilya       | Danilov   | man    |  23
+  3 | Marina     | Danilova  | female |  23
+  6 | Anna       | Ivanova   | female |  39
+  4 | Ilya       | Petrovich | man    |  45
+  5 | Anna       | Petrovna  | female |  40
+(5 rows)
+
+Задание 2.2
+skypro=# SELECT first_name AS Имя,
+skypro-# SUM (age) AS суммарный_возраст
+skypro-# FROM employee
+skypro-# GROUP BY Имя;
+  Имя   | суммарный_возраст 
+--------+-------------------
+ Anna   |                79
+ Marina |                23
+ Ilya   |                68
+(3 rows)
+
+Задание 2.3              
+skypro=# SELECT first_name, age
+skypro-# FROM employee
+skypro-# WHERE age =(
+skypro(# SELECT MIN(age)
+skypro(# FROM employee
+skypro(# );
+ first_name | age 
+------------+-----
+ Ilya       |  23
+ Marina     |  23
+(2 rows)
+
+Задание 2.4                    
+skypro=# SELECT * FROM employee
+skypro-# WHERE first_name
+skypro-# IN(
+skypro(# 'Ilya',
+skypro(# 'Anna'
+skypro(# )
+skypro-# ORDER BY age;
+ id | first_name | last_name | gender | age 
+----+------------+-----------+--------+-----
+  2 | Ilya       | Danilov   | man    |  23
+  6 | Anna       | Ivanova   | female |  39
+  5 | Anna       | Petrovna  | female |  40
+  4 | Ilya       | Petrovich | man    |  45
+(4 rows)
+
