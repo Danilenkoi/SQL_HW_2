@@ -1,0 +1,18 @@
+Задание 2.4
+skypro=# WITH duplicate_value AS (
+skypro(# SELECT first_name, COUNT(*) AS CNT
+skypro(# FROM employee
+skypro(# GROUP BY first_name
+skypro(# HAVING COUNT(*) > 1
+skypro(# )
+skypro-# SELECT age, first_name
+skypro-# FROM employee
+skypro-# WHERE first_name IN (SELECT first_name FROM duplicate_value)
+skypro-# ORDER BY age;
+ age | first_name 
+-----+------------
+  23 | Ilya
+  39 | Anna
+  40 | Anna
+  45 | Ilya
+(4 rows)
