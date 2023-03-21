@@ -1,0 +1,10 @@
+
+skypro=# SELECT first_name, MAX(age) AS max_age
+skypro-# FROM employee
+skypro-# GROUP BY first_name
+skypro-# HAVING COUNT(*) > 1;
+ first_name | max_age 
+------------+---------
+ Anna       |      40
+ Ilya       |      45
+(2 rows)
